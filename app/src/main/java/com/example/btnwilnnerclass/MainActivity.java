@@ -12,25 +12,21 @@ public class MainActivity extends AppCompatActivity {
     TextView mTextView1;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
 
-        mButton1 = findViewById(R.id.button1);
-        mTextView1 = findViewById(R.id.textView1);
+    mButton1 = findViewById(R.id.button1);
+    mTextView1 = findViewById(R.id.textView1);
 
-        mButton1.setOnClickListener(new MyOnclickListener(this));
+    mButton1.setOnClickListener(new MyOnclickListener());
+}
+
+private class MyOnclickListener implements View.OnClickListener {
+    MainActivity mainActivity;
+    @Override
+    public void onClick(View v) {
+        mainActivity.mTextView1.setText("You clicked button1");
     }
-
-    private class MyOnclickListener implements View.OnClickListener {
-        MainActivity mainActivity;
-        public MyOnclickListener(MainActivity mainActivity) {
-            this.mainActivity = mainActivity;
-        }
-
-        @Override
-        public void onClick(View v) {
-            mainActivity.mTextView1.setText("You clicked button1");
-        }
-    }
+}
 }
